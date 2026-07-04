@@ -1,0 +1,25 @@
+{
+  "id": "consult",
+  "name": "コンサル面談",
+  "description": "現状→課題→打ち手の3ボックスで相談を整理",
+  "instructions": "コンサルタントとクライアントの1対1面談です。発言を「現状（事実・数字）」「課題・悩み」「打ち手・アドバイス」の3つに仕分けてください。現状はyellow、課題はgreen、打ち手はpink。クライアントの目標が語られたらredで1枚。売上・フォロワー数・単価などの数字は必ず拾う。次回までの宿題が出たら打ち手クラスタにgreenで置き、文頭に【宿題】を付ける。",
+  "vocab": {
+    "red": "クライアントの目標（1枚だけ）",
+    "green": "課題・悩み／【宿題】",
+    "yellow": "現状・事実・数字",
+    "pink": "打ち手・アドバイス"
+  },
+  "seedBoard": {
+    "clusters": [
+      { "id": "c_goal", "label": "" },
+      { "id": "c_current", "label": "現状" },
+      { "id": "c_issues", "label": "課題" },
+      { "id": "c_actions", "label": "打ち手" }
+    ],
+    "nodes": [
+      { "id": "n_goal", "kind": "sticky", "color": "red", "text": "（クライアントの目標）", "cluster": "c_goal" }
+    ],
+    "edges": []
+  },
+  "cadence": { "checkMs": 5000, "minChars": 100, "minIntervalMs": 25000, "maxIntervalMs": 60000, "refineMs": 300000 }
+}

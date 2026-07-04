@@ -1,0 +1,7 @@
+# シェルスクリプトは必ずLF（Macでダブルクリック/実行できるように）
+*.sh    text eol=lf
+*.command text eol=lf
+# Windowsバッチはcrlf
+*.bat   text eol=crlf
+# その他テキストは自動判定（JS/JSON/md等はLFで問題なし）
+* text=auto

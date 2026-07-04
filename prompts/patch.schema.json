@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VoiceMiroPatch",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["ops"],
+  "properties": {
+    "ops": {
+      "type": "array",
+      "maxItems": 12,
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["op", "node"],
+            "properties": {
+              "op": { "const": "add_node" },
+              "node": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["id", "kind", "text", "cluster"],
+                "properties": {
+                  "id": { "type": "string", "pattern": "^n_[a-z0-9_]+$", "description": "n_で始まる意味slug" },
+                  "kind": { "type": "string", "enum": ["sticky", "heading", "text"] },
+                  "color": { "type": "string", "enum": ["red", "green", "yellow", "pink"] },
+                  "text": { "type": "string", "description": "付箋は20字以内・体言止め" },
+                  "cluster": { "type": "string", "pattern": "^c_[a-z0-9_]+$" },
+                  "parent": { "type": "string", "description": "話の流れで直前となる概念のノードID（真下に配置され矢印で繋がる）。注記(kind=text)では親付箋のID" }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["op", "cluster"],
+            "properties": {
+              "op": { "const": "add_cluster" },
+              "cluster": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["id"],
+                "properties": {
+                  "id": { "type": "string", "pattern": "^c_[a-z0-9_]+$" },
+                  "label": { "type": "string" }
+                }
+              },
+              "near": { "type": "string", "description": "意味的に近い既存クラスタID" }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["op", "id"],
+            "properties": {
+              "op": { "const": "update_node" },
+              "id": { "type": "string" },
+              "text": { "type": "string" },
+              "color": { "type": "string", "enum": ["red", "green", "yellow", "pink"] }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["op", "from", "to"],
+            "properties": {
+              "op": { "const": "add_edge" },
+              "from": { "type": "string" },
+              "to": { "type": "string" }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["op", "id", "label"],
+            "properties": {
+              "op": { "const": "rename_cluster" },
+              "id": { "type": "string" },
+              "label": { "type": "string" }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["op", "keep", "remove"],
+            "properties": {
+              "op": { "const": "merge_nodes" },
+              "keep": { "type": "string" },
+              "remove": { "type": "string" }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["op", "text"],
+            "properties": {
+              "op": { "const": "set_summary" },
+              "text": { "type": "string", "description": "500字以内の要約" }
+            }
+          }
+        ]
+      }
+    },
+    "summary": {
+      "type": "string",
+      "description": "更新後のここまでの要約(500字以内)。変更不要なら省略"
+    }
+  }
+}

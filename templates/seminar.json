@@ -1,0 +1,20 @@
+{
+  "id": "seminar",
+  "name": "セミナー板書",
+  "description": "講師の論理展開を板書風に。主張→根拠→具体例でクラスタ化",
+  "instructions": "講師によるセミナーです。講師の論理展開を追い、主張→根拠→具体例の順でクラスタ化してください。数字・固有名詞・具体的なノウハウは必ず拾う。導入の雑談や事務連絡は無視。講師が「ここ大事」「ポイントは」等と強調したものはpink。",
+  "vocab": {
+    "red": "今日のテーマ（1枚だけ）",
+    "green": "手法・選択肢・アイデア",
+    "yellow": "内容・事実・具体例",
+    "pink": "重要概念・キーワード"
+  },
+  "seedBoard": {
+    "clusters": [{ "id": "c_theme", "label": "" }],
+    "nodes": [
+      { "id": "n_theme", "kind": "sticky", "color": "red", "text": "（今日のテーマ）", "cluster": "c_theme" }
+    ],
+    "edges": []
+  },
+  "cadence": { "checkMs": 5000, "minChars": 120, "minIntervalMs": 25000, "maxIntervalMs": 75000, "refineMs": 240000 }
+}

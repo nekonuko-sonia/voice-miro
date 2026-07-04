@@ -1,0 +1,25 @@
+{
+  "id": "minutes",
+  "name": "議事録",
+  "description": "決定事項・TODO・論点を仕分けるmtg用",
+  "instructions": "ビジネスミーティングです。発言を「決定事項」「TODO・宿題」「論点・保留」「共有情報」に仕分けてください。決定事項はpink、TODOはgreen（可能なら文末に担当者名）、論点・共有はyellow。日付・金額・期限などの数字は必ず拾い、text注記として付箋に添える。",
+  "vocab": {
+    "red": "会議の目的（1枚だけ）",
+    "green": "TODO・宿題（担当者名も）",
+    "yellow": "論点・共有情報",
+    "pink": "決定事項"
+  },
+  "seedBoard": {
+    "clusters": [
+      { "id": "c_goal", "label": "" },
+      { "id": "c_decisions", "label": "決定事項" },
+      { "id": "c_todos", "label": "TODO" },
+      { "id": "c_topics", "label": "論点・共有" }
+    ],
+    "nodes": [
+      { "id": "n_goal", "kind": "sticky", "color": "red", "text": "（会議の目的）", "cluster": "c_goal" }
+    ],
+    "edges": []
+  },
+  "cadence": { "checkMs": 5000, "minChars": 100, "minIntervalMs": 25000, "maxIntervalMs": 60000, "refineMs": 300000 }
+}

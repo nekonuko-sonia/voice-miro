@@ -1,0 +1,20 @@
+{
+  "id": "brainstorm",
+  "name": "ブレスト",
+  "description": "中央テーマからアイデアを放射状に広げる",
+  "instructions": "ブレインストーミングです。出てきたアイデアは粒が粗くても全部greenで拾ってください（捨てない）。アイデア同士が似ていても、この段階ではマージせず並べる。話者が乗り気になったアイデア・深掘りが始まったアイデアはpinkに昇格し、深掘り内容をyellowでぶら下げる（parentを指定）。テーマ違いのアイデアが出たら新クラスタへ。",
+  "vocab": {
+    "red": "ブレストのテーマ（1枚だけ）",
+    "green": "アイデア（全部拾う）",
+    "yellow": "アイデアの深掘り・具体化",
+    "pink": "有望アイデア"
+  },
+  "seedBoard": {
+    "clusters": [{ "id": "c_theme", "label": "" }],
+    "nodes": [
+      { "id": "n_theme", "kind": "sticky", "color": "red", "text": "（ブレストのテーマ）", "cluster": "c_theme" }
+    ],
+    "edges": []
+  },
+  "cadence": { "checkMs": 5000, "minChars": 80, "minIntervalMs": 20000, "maxIntervalMs": 60000, "refineMs": 300000 }
+}

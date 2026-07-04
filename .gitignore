@@ -1,0 +1,13 @@
+# シークレット同梱ファイル（配布はするがリポジトリには入れない）
+config.local.json
+config.json
+
+# セッション記録
+sessions/
+
+# 参照用スクショ（公開リポジトリに含めない）
+CleanShot_*.png
+
+# OS
+.DS_Store
+Thumbs.db

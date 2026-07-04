@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Voice-Miro</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>🎤 Voice-Miro</h1>
+  <div id="health" class="pills"></div>
+</header>
+
+<div id="banner" class="banner" style="display:none"></div>
+
+<!-- 開始フォーム -->
+<section id="setup" class="card">
+  <h2>セッション開始</h2>
+  <div class="row">
+    <label>テンプレ
+      <select id="template"></select>
+    </label>
+    <label>タイトル
+      <input id="title" placeholder="例: 7月セミナー">
+    </label>
+  </div>
+  <div class="row">
+    <label class="wide">Miroボード
+      <select id="boardMode">
+        <option value="new">新規ボードを作成</option>
+        <option value="existing">既存ボードURLを使う</option>
+      </select>
+    </label>
+    <label class="wide" id="boardUrlWrap" style="display:none">ボードURL
+      <input id="boardUrl" placeholder="https://miro.com/app/board/xxxx=/">
+    </label>
+  </div>
+  <div class="row">
+    <label>音声認識
+      <select id="sttProvider"></select>
+    </label>
+    <label>マイク
+      <select id="micDevice"><option value="">既定のマイク</option></select>
+    </label>
+  </div>
+  <button id="startBtn" class="primary">● セッション開始</button>
+  <p id="setupMsg" class="msg"></p>
+</section>
+
+<!-- 実行中パネル -->
+<section id="live" class="card" style="display:none">
+  <div class="row spread">
+    <div>
+      <span id="phase" class="pill">待機中</span>
+      <span id="sttStatus" class="pill">STT: -</span>
+      <span id="stats" class="pill">生成0回 / 付箋0枚</span>
+    </div>
+    <div>
+      <a id="boardLink" class="btn" target="_blank" style="display:none">Miroボードを開く ↗</a>
+      <button id="genNow" class="btn">⚡ 今すぐ更新</button>
+      <button id="mdBtn" class="btn">📄 Markdown</button>
+      <button id="endBtn" class="btn danger">■ 終了</button>
+    </div>
+  </div>
+
+  <div class="row cols2">
+    <div>
+      <h3>ボード構造（デバッグビュー）</h3>
+      <div id="outline" class="outline"></div>
+    </div>
+    <div>
+      <h3>要約</h3>
+      <div id="summary" class="summary">（まだ無し）</div>
+      <h3>ログ</h3>
+      <div id="log" class="log"></div>
+    </div>
+  </div>
+
+  <div class="ticker">
+    <div id="tickerFinal"></div>
+    <div id="tickerInterim"></div>
+  </div>
+</section>
+
+<script src="stt.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

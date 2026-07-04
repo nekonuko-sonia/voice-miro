@@ -1,0 +1,7 @@
+{
+  "_comment": "これは記入例です。ソニアが config.local.json を作って値を埋めます（tools/make-config で自動生成も可）。他の2人は触りません。環境変数がある場合はそちらが優先されます。",
+  "MIRO_TOKEN": "（ソニアのMiro非期限トークン。docs/SETUP_MIRO.md）",
+  "SONIOX_API_KEY": "（ソニアのSoniox APIキー。docs/SETUP_STT.md。無ければ空でOK＝Web Speechで動く）",
+  "DEEPGRAM_API_KEY": "",
+  "MODEL": "sonnet"
+}
