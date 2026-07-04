@@ -57,8 +57,15 @@
   - Miro = ソニアのトークン1つに集約。`createBoard`はリンク共有(access:edit)を試みて無料プランなら簡易作成にフォールバック（**有料化で自動的にログイン不要リンク共有化**）
   - 二重起動はEADDRINUSE検知でブラウザを開くだけ
   - 手順書: `配布手順_ソニア用.md`（ソニア用）/ `README.md`（3人用）
-- ⬜ 次: ねこ/ぬこの実機（Mac/Win）でダブルクリック起動を実走確認。Miro有料化後のリンク共有動作確認。長尺台本での島折り返し確認
-- ⬜ 任意: Refiner実地検証・キャッチアップ再生成・STTヘッドツーヘッド・Node同梱exe化（Node不要にするなら）
+- ✅ **自動アップデート配信**（GitHub公開リポジトリ `nekonuko-sonia/voice-miro`）:
+  - 二人は初回1回だけインストーラ1行（`install.sh` を curl|bash・Miroトークンをenvで渡す）→ 以降ダブルクリック
+  - 起動時に `update.js` がGitHubの `VERSION` を見て新しければtarballで本体だけ自動更新（config/sessionsは保持・失敗/オフラインでもスキップして起動）
+  - Mac実行権限は `.gitattributes`(sh/command=LF) + `git add --chmod=+x` でgit記録→tarballまで生存（検証済み）
+  - Miro有料化済み → `createBoard`がリンク共有(access:edit)ボードを作成（他2人ログイン不要・シークレットで開けることを確認済み）
+  - **更新手順**: コード直す→`VERSION`を上げる→commit&push（pushは安全機構によりユーザーが `!` で実行）。詳細 `docs/PUBLISH.md`
+  - 開発元＝このPC（Windows・git管理下）。Windowsランチャーは `update.js` を呼ばない＝自己更新しない
+- ⬜ 次: ねこ/ぬこの実機Macで実際にインストーラ1行→ダブルクリック起動を実走確認。長尺台本での島折り返し確認
+- ⬜ 任意: Refiner実地検証・STTヘッドツーヘッド・Node同梱exe化
 
 ## レイアウト自己検証ループ（tools/ — LLM・ユーザー不要で見た目を回せる）
 

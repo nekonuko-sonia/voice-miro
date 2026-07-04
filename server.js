@@ -15,7 +15,7 @@ const { spawn } = require('child_process');
     const p = path.join(__dirname, f);
     if (!fs.existsSync(p)) continue;
     try {
-      const cfg = JSON.parse(fs.readFileSync(p, 'utf8'));
+      const cfg = JSON.parse(fs.readFileSync(p, 'utf8').replace(/^﻿/, '')); // 先頭BOM除去
       for (const [k, v] of Object.entries(cfg)) {
         if (v !== '' && v != null && !process.env[k]) process.env[k] = String(v);
       }
